@@ -1,0 +1,8 @@
+Your employer, SGA (Secretive government Agency) want you to develop an encryption program. After doing some research you have two candidate algorithms. According to your research, Algorithm 1 has cost Θ(n3), while algorithm 2 is listed as Ο(n4) and Ω(n2). Which one do you choose? How do you decide? What would you have to know to choose the other one?
+
+Consider the worst case - Alex Shah
+
+Algorithm 1 has a cost of Theta (n^3), so in the best case and worst case the algorithm will perform like a cubic. 
+Algorithm 2 is described as Big O (n^4) and Big Omega (n^2), so in the worst case the algorithm will behave like n^4 and at best it will perform like a quadratic. 
+
+We know more about algorithm 1 since its behavior is described to us in terms of Big Theta. Algorithm 1 is always cubic whereas algorithm 2 might be as bad as n^4 or might perform better than the first in some cases. However, until we can use the second algorithm with sufficiently large inputs, we can't determine the real world behavior, like if it performs closer to its upper bound or its lower bound in most cases.  Since there's a difference in how much information we have on each algorithm, I would look most closely at the worst case, where the first algorithm is an order faster than the second. For this reason, I think it's better to start off with algorithm 1.
