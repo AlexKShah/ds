@@ -1,39 +1,19 @@
 Homework 1: Complexity and ADTs
-Data Structures
-'''
-Complete the Homework 1 problems, include your name as part of the file name, e.g. JSmithHW1.pdf, and submit the document as a PDF attachment to this assignment item. Also include your name inside the file.
-
-This homework ties together a lot of concepts that are external to the module 1 as a way to gauge your readiness for the course and what to expect.
-
-The optional reading is extremely helpful for this assignment
-'''
-
-Q1 - Q4 are related to the ADT material. In the lecture, we talked about "outside
-the black box" and "inside the black box". The related discussion question will give
-you some practice with working "outside the black box". The assignment is
-intended to help you think about "inside the black box", by having you look at
-alternative representations. 
-
-In Q1, you look at an alternative to binary. 
-
-In Q2, you look at where stuff might be stored as a consequence of a selected
-implementation. 
-
-In Q3 and Q4, you look at alternative data structures to leverage
-the fact that many locations in a standard array might always be empty. 
-
-In Q6 and Q7 you look at how the time is affected by the underlying cost of the algorithm.
 
 1. Show how nonnegative numbers can be represented in an imaginary ternary
 computer using trits (0,1,2) instead of bits (0,1). Why don't we do things this
 way?
 
+	For positive integers, we can represent ternary values similarly to base 2. e.g. 3^3+3^2+3^1+3^0, where we sum up powers of 3 instead of powers of 2.
+	This works well but isn't more efficient for positive integers than binary. However, other conserations may make trits a worse choice. For example boolean logic using trits would effectively work like binary with duplicates. 1 AND 2 is no different than 1 AND 1.
+	Currently it's easier to differentiate between two voltage levels than 3, and existing signalling and logic relies on binary properties at a hardware level such as logic gates. While some systems could continue to use binary and add ternary logic, we would then need to differentiate base 2 and 3 encodings and generally keep track of a mixed base environment which may be complex.
+
 2. If each element of an array RM, with 10 rows and 20 columns, stored in row
 major order, takes four bytes of space, where the first element of RM starts at
 100, what is the address of RM[5][3] and RM[9][19]?
-In questions 3 and 4, we suggest indexing the array from one, since matrices are
-normally indexed from (1,1). After you find your formula, then you can adjust it to
-index the array from zero.
+
+	Each row is 20 values long * 4 bits for each value, plus 100 offset for the first element
+	so rows 100+(5*20+3)*4 = 512, and 100+(9*20+19)*4 = 896
 
 3. A lower triangular matrix is an nxn array in which has a[i][j] = = 0 if i<j. What is
 the maximum number of non zero elements? How can they be stored in
@@ -42,6 +22,25 @@ only want to store the nonzero elements). Do not write code. Code would work if
 you were manually converting the matrix from one form to the other all at once,
 but you need the formula to convert otherwise.
 
+	Since we consider the diagonal, the max nonzero elements must be (n(n+1))/2. In a 3x3 matrix we would expect 6 elements to be nonzero, and (3*4)/2 = 6.
+	A matrix can be stored sequentially as a one dimensional array such as a list, for example in row order.
+	
+	K is a formula to find the index position where a nonzero value of a lower triangular matrix can be stored in a 1d array
+	To find this, use n(n+1)/2 based on the row index i to calculate previous triangles, and shift j units. 
+	k = (i * (i + 1) / 2) + j
+	
+	i  0 1 2 j
+	0 |1 0 0
+	1 |2 3 0
+	2 |4 5 6
+
+	(0,0) = 0*1/2 +0 = 0
+	(1,0) = 1*2/2 +0 = 1
+	(1,1) = 1*2/2 +1 = 2
+	(2,0) = 2*3/2 +0 = 3
+	(2,1) = 2*3/2 +1 = 4
+	(2,2) = 2*3/2 +2 = 5
+
 4. A tridiagonal matrix is an nxn array in which has a[i][j] = = 0 if |i-j| > 1. What is
 the maximum number of non zero elements? How can they be stored in
 memory sequentially? Find a formula k= f(i,j) to store location a[i][j] in k, when
@@ -49,6 +48,18 @@ memory sequentially? Find a formula k= f(i,j) to store location a[i][j] in k, wh
 Code would work if you were manually converting the matrix from one form to
 the other all at once, but you need the formula to convert otherwise.
 
+	The tridiagonal matrix has elements in its diagonal, and the diagonals alongside the diagonal, which are one element shorter than n, the diagonal. So in total there should be n + (n-1) + (n-1) elements, or 3n-2. A 3x3 matrix should have 7 nonzero elements, 3*3-2 = 7.
+	These elements can be stored sequentially in a one dimensional array like a list in row order.
+	
+	k = ???
+
+	i  0 1 2 j
+	0 |1 2 0
+	1 |3 4 5
+	2 |0 6 7
+	
+
+	
 5. Consider two functions f(n)=an2, and g(n)=bnlgn. For what value of n do they
 intersect, and at which value(s) of the constants a and b? Pick some values of a
 and b and then find n. Experiment with different sets of values for a and
@@ -59,11 +70,19 @@ We suggest solving this problem empirically, rather than mathematically, i.e.
 draw graph of the functions. Remember that a and b are constants, but may
 not necessarily be integers.
 
-For Q6 and Q7 just worry about time, not space. Feel free to leave your response in
-exponential form.
+	The two functions always intersect at the origin, n=0, and can cross up to 2 more times depending on the a,b values.
+	When a>b they intersect at n=0 only; when b<a they intersect at n=0, and up to 2 more times; and when a=b they intersect at n=0 only.
 
 6. What is the maximum size of a problem that can be solved in one hour if the
 algorithm takes lg n microseconds?
+	1 hour in microseconds = 3.6 billion
+	lg(n) = 3.6B
+	n= 2^3.6B
 
 7. What is the maximum size of a problem that can be solved in one hour if the
 algorithm takes n3 microseconds?
+
+	1 hour = 3.6B ms
+	n^3 = 3.6B
+	n = root(3.6B,3)
+	~1532.61886479
