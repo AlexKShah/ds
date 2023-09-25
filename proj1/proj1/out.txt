@@ -1,0 +1,11 @@
+C AB+ -
+BC+ A -
+F E D-+ C -A+B$
+EF* E D ABC-+$* -
+A B ABC+*C-+*
+CBA*+ ABC+/
+BA+ C B --A**
+A B - A-/B+C/
+A B ABC+$C-+*
+BA+ C AB0+/-/
+A B ABC^$C-+*
