@@ -1,6 +1,6 @@
 from sys import stderr
 from typing import TextIO
-from .mystack import MyStack
+from mystack import MyStack
 
 
 def process_files(input_file: TextIO, output_file: TextIO) -> None:

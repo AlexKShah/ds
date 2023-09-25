@@ -7,3 +7,4 @@
 # Here we're very simply making it easier for other scripts to access the
 # process_files function. Note: other scripts and functions are still
 # accessible
+from proj1.proj1 import process_files

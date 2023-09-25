@@ -1,6 +1,6 @@
 from pathlib import Path
 import argparse
-from .proj1 import process_files  # Import process_files from proj1 module
+from proj1 import process_files  # Import process_files from proj1 module
 
 
 def main():
