@@ -1,6 +1,6 @@
 from sys import stderr
 from typing import TextIO
-from mystack import MyStack
+from proj1.mystack import MyStack
 
 
 def process_files(input_file: TextIO, output_file: TextIO) -> None:
@@ -43,4 +43,7 @@ def convert_prefix_to_postfix(pre: str) -> str:
             s.push(str(a + b + i))
         else:
             s.push(i)
-    return " ".join(s.items)
+    ss = []
+    while not s.is_empty():
+        ss += s.pop()
+        return str(*ss)
