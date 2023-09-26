@@ -39,8 +39,7 @@ def process_files(input_file: TextIO, output_file: TextIO) -> None:
             # write output
             output_file.write("Prefix: " + cleaned_line + "\n")
             output_file.write("Postfix: ")
-            for an in ans:
-                output_file.write(an)
+            output_file.write(ans)
             output_file.write('\n')
 
         except ValueError as e:
@@ -70,12 +69,12 @@ def convert_prefix_to_postfix(pre: str) -> str:
 
     # Iterate through the reversed expression
     for char in reversed_expression:
+        if char in [" ", "", "\n", "\t"]:
+            # discard whitespaces, blanks, tabs, and newlines
+            continue
         if not is_operator(char):
             # Operand: Push it onto the stack
             s.push(char)
-        elif char in [" ", "", "\n"]:
-            # discard whitespaces, blanks, and newlines
-            continue
         else:
             # Operator: Pop two operands from the stack and create a new operand
             operand1 = s.pop()
