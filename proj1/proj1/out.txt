@@ -1,9 +1,18 @@
-AB+C-
-ABC+-
-AB-C+DEF-+$
-ABCDE-+$*EF*-
-ABC+*CBA-+*
-ABC+/CBA*+
-ABC+$CBA-+*
-AB0+/CBA+-/
-ABC^$CBA-+*
+Prefix: -+ABC
+Postfix: AB+C-
+Prefix: -A+BC
+Postfix: ABC+-
+Prefix: $+-ABC+D-EF
+Postfix: AB-C+DEF-+$
+Prefix: -*A$B+C-DE*EF
+Postfix: ABCDE-+$*EF*-
+Prefix: **A+BC+C-BA
+Postfix: ABC+*CBA-+*
+Prefix: /A+BC+C*BA
+Postfix: ABC+/CBA*+
+Prefix: *$A+BC+C-BA
+Postfix: ABC+$CBA-+*
+Prefix: //A+B0-C+BA
+Postfix: AB0+/CBA+-/
+Prefix: *$A^BC+C-BA
+Postfix: ABC^$CBA-+*

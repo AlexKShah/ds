@@ -1,3 +1,9 @@
+"""
+Initial run point for proj1, parse required arguments in file and out file
+
+__author__ = Alex Shah
+"""
+
 from pathlib import Path
 import argparse
 from proj1.proj1 import process_files  # Import process_files from proj1 module

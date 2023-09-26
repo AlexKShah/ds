@@ -1,3 +1,10 @@
+"""
+Class MyStack is an implementation of a stack data structure
+
+__author__ = Alex Shah
+"""
+
+
 class MyStack:
     def __init__(self):
         self.items = []
@@ -11,17 +18,8 @@ class MyStack:
         else:
             return None  # Stack is empty
 
-    def peek(self):
-        if not self.is_empty():
-            return self.items[-1]
-        else:
-            return None  # Stack is empty
-
     def is_empty(self):
         return len(self.items) == 0
 
     def size(self):
         return len(self.items)
-
-    def delete(self):
-        self.items = []
