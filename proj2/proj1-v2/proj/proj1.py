@@ -4,13 +4,13 @@ converts prefix expressions to postfix,
 and writes them to an output file.
 
 __author__ = Alex Shah
-__version__ = proj1
+__version__ = proj2
 """
 
 from sys import stderr
 from typing import TextIO
 
-from proj1.mystack import MyStack
+from proj.mystack import MyStack
 
 
 def process_files(input_file: TextIO, output_file: TextIO) -> None:

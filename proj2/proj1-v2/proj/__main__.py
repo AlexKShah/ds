@@ -1,5 +1,6 @@
 """
-Initial run point for proj1, parse required arguments in file and out file
+Initial run point for proj, parse required arguments in file and out file
+Modified to use recursive functions for Lab 2
 
 __author__ = Alex Shah
 __version__ = proj2
@@ -7,8 +8,8 @@ __version__ = proj2
 
 from pathlib import Path
 import argparse
-from proj1.proj1 import process_files  # Import process_files from proj1 module version proj1
-from proj1.proj2 import recursive_process_files # Import recursive_process_files from proj1 module version proj2
+from proj.proj1 import process_files  # Import process_files from proj module version proj
+from proj.proj2 import recursive_process_files # Import recursive_process_files from proj module version proj2
 
 
 def main():

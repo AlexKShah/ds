@@ -1,3 +1,5 @@
++-+-+-+ABC
+-*-*AB
 *+AB-CD
 *-A/BC-/AKL
     ((A + B) - C * (D / E)) + F

@@ -8,8 +8,9 @@ Prefix: -*A$B+C-DE*EF
 Postfix: ABCDE-+$*EF*-
 Prefix: **A+BC+C-BA
 Postfix: ABC+*CBA-+*
-Prefix: /A+BC+C*BA
-Postfix: ABC+/CBA*+
+Error: Finished with expression and found problem, too few operators: /A+BC+C*BA 
+Error: Could not continue with the expression, too few operands: *-*-ABC+BA 
+Error: Could not continue with the expression, too few operands: /+/A-BC-BA 
 Prefix: *$A+BC+C-BA
 Postfix: ABC+$CBA-+*
 Prefix: //A+B0-C+BA

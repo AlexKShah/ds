@@ -3,8 +3,8 @@ This program receives lines from an input file,
 converts prefix expressions to postfix, now with recursion!
 and writes them to an output file, now including errors in the output.
 
-In addition the program now handles cases where there are too few operators
- instead of just checking that valid sub expressions can be formed
+In addition, the program now handles cases where there are too few operators
+instead of just checking that valid sub expressions can be formed
 
 __author__ = Alex Shah
 __version__ = proj2
@@ -12,9 +12,7 @@ __version__ = proj2
 
 from sys import stderr
 from typing import TextIO
-
-
-# from proj1.mystack import MyStack
+# from proj.mystack import MyStack
 
 
 def recursive_process_files(input_file: TextIO, output_file: TextIO) -> None:
@@ -42,8 +40,9 @@ def recursive_process_files(input_file: TextIO, output_file: TextIO) -> None:
             # convert prefix to postfix
             ans, index = recursive_convert_prefix_to_postfix(cleaned_line)
 
+            # If we can get through the expression without considering all characters, there must be too few operators
             if index < len(cleaned_line):
-                raise ValueError("Too few OPERATORS in the expression: " + cleaned_line)
+                raise ValueError("Finished with expression and found problem, too few operators: " + cleaned_line)
 
             # write output
             output_file.write("Prefix: " + cleaned_line + "\n")
@@ -51,7 +50,7 @@ def recursive_process_files(input_file: TextIO, output_file: TextIO) -> None:
             output_file.write(ans)
             output_file.write('\n')
 
-        except ValueError as e:
+        except Exception as e:
             # Handle invalid expressions
             print(f'Error: {e}', file=stderr)
             output_file.write(f'Error: {e} \n')
@@ -74,11 +73,11 @@ def recursive_convert_prefix_to_postfix(pre: str, index: int = 0) -> (str, int):
     :return: postfix expression and current end index
     """
     # If the end of our expression is longer than the expression, we must be missing an operand
-    if index >= len(pre):
-        raise ValueError("Too few OPERANDS in the expression: " + str(pre))
-
-    # consider character at the end of current expression
-    char = pre[index]
+    try:
+        # consider character at the end of current expression
+        char = pre[index]
+    except IndexError as e:
+        raise IndexError("Could not continue with the expression, too few operands: " + str(pre))
 
     if is_operator(char):
         try:
@@ -87,10 +86,10 @@ def recursive_convert_prefix_to_postfix(pre: str, index: int = 0) -> (str, int):
             operand2, index = recursive_convert_prefix_to_postfix(pre, index)
         except ValueError as e:
             # If we can't match up operands for the operator, then we have too few operators
-            raise ValueError("Too few OPERATORS in the expression: " + str(pre))
+            raise ValueError("Problem recursing with the expression, too few operators: " + str(pre))
 
-        # Make a sub expression, recurse back up with the index in a tuple
+        # Make a sub expression, recurse back up providing the end index in the tuple
         return operand1 + operand2 + char, index
     else:
-        # operand, recurse back up
+        # operand, recurse back up  and try next character
         return char, index + 1
