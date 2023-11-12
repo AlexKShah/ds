@@ -2,7 +2,7 @@
 Class MyStack is an implementation of a stack data structure
 
 __author__ = Alex Shah
-__version__ = proj2
+__version__ = proj3
 """
 
 

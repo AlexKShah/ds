@@ -4,7 +4,7 @@ converts prefix expressions to postfix,
 and writes them to an output file.
 
 __author__ = Alex Shah
-__version__ = proj2
+__version__ = proj3
 """
 
 from sys import stderr

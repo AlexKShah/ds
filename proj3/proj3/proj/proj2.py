@@ -7,7 +7,7 @@ In addition, the program now handles cases where there are too few operators
 instead of just checking that valid sub expressions can be formed
 
 __author__ = Alex Shah
-__version__ = proj2
+__version__ = proj3
 """
 
 from sys import stderr

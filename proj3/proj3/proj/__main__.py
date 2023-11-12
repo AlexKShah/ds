@@ -1,9 +1,9 @@
 """
 Initial run point for proj, parse required arguments in file and out file
-Modified to use recursive functions for Lab 2
+Modified for huffman coding for Lab 3
 
 __author__ = Alex Shah
-__version__ = proj2
+__version__ = proj3
 """
 
 from pathlib import Path

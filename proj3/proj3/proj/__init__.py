@@ -1,6 +1,6 @@
 """
 __author__ = Alex Shah
-__version__ = proj2
+__version__ = proj3
 """
 
 from proj.proj1 import process_files
