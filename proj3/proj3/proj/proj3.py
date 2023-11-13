@@ -23,11 +23,13 @@ def test_case(huffman_codes, huffman_root, output_file):
 
 
 def huffman_process_files(freq_file, encoded_file, clear_file, output_file):
-    frequency_table = {}
-    for line in freq_file:
-        char, freq = line.strip().split(' - ')
-        frequency_table[char] = int(freq)
-
+    """
+    :param freq_file: frequency table file
+    :param encoded_file: file to decode
+    :param clear_file: file to encode
+    :param output_file: file to write to
+    """
+    frequency_table = build_frequency_table(freq_file)
     huffman_root = build_huffman_tree(frequency_table)
     huffman_codes = get_huffman_codes(huffman_root)
 
@@ -43,6 +45,14 @@ def huffman_process_files(freq_file, encoded_file, clear_file, output_file):
 
     # DEBUG
     test_case(huffman_codes, huffman_root, output_file)
+
+
+def build_frequency_table(freq_file):
+    frequency_table = {}
+    for line in freq_file:
+        char, freq = line.strip().split(' - ')
+        frequency_table[char] = int(freq)
+    return frequency_table
 
 
 def build_huffman_tree(frequency_table):
@@ -63,18 +73,18 @@ def build_huffman_tree(frequency_table):
     return priority_queue.pop()
 
 
+def get_huffman_codes(root):
+    codes = {}
+    assign_codes_preorder(root, "", codes)
+    return codes
+
+
 def assign_codes_preorder(node, code, codes):
     if node is not None:
         if node.char is not None:
             codes[node.char] = code
         assign_codes_preorder(node.left, code + "0", codes)
         assign_codes_preorder(node.right, code + "1", codes)
-
-
-def get_huffman_codes(root):
-    codes = {}
-    assign_codes_preorder(root, "", codes)
-    return codes
 
 
 def huffman_encoding(text, code_map, output_file):
