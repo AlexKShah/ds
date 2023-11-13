@@ -7,25 +7,6 @@ __version__ = proj3
 """
 
 
-class MyPriorityQueue:
-    def __init__(self):
-        self.items = []
-
-    def push(self, item):
-        self.items.append(item)
-        # Sort by frequency, then single-letter precedence, then alphabetically
-        self.items.sort(key=lambda x: (x.freq, len(x.char) if x.char else 0, x.char if x.char else ""))
-
-    def pop(self):
-        return self.items.pop(0) if self.items else None
-
-    def is_empty(self):
-        return len(self.items) == 0
-
-    def size(self):
-        return len(self.items)
-
-
 class HuffmanNode:
     def __init__(self, char, freq):
         self.char = char
@@ -33,9 +14,37 @@ class HuffmanNode:
         self.left = None
         self.right = None
 
+    def is_leaf(self):
+        return self.left is None and self.right is None
+
     def __lt__(self, other):
+        if self.freq == other.freq:
+            if self.is_leaf() and other.is_leaf():
+                return self.char < other.char
+            return self.is_leaf()
         return self.freq < other.freq
 
+
+class MyPriorityQueue:
+    def __init__(self):
+        self.elements = []
+
+    def push(self, item):
+        # Insert item in sorted order
+        index = 0
+        for index, current_item in enumerate(self.elements):
+            if item < current_item:
+                break
+        else:
+            index += 1
+        self.elements.insert(index, item)
+
+    def pop(self):
+        # Pop the item with the highest priority (lowest frequency)
+        return self.elements.pop(0) if self.elements else None
+
+    def __len__(self):
+        return len(self.elements)
 
 class MyStack:
     def __init__(self):
