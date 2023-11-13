@@ -13,10 +13,11 @@ class MyPriorityQueue:
 
     def push(self, item):
         self.items.append(item)
-        self.items.sort(key=lambda x: x.freq, reverse=True)
+        # Sort by frequency, then single-letter precedence, then alphabetically
+        self.items.sort(key=lambda x: (x.freq, len(x.char) if x.char else 0, x.char if x.char else ""))
 
     def pop(self):
-        return self.items.pop() if self.items else None
+        return self.items.pop(0) if self.items else None
 
     def is_empty(self):
         return len(self.items) == 0
