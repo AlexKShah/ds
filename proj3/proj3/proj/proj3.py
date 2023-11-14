@@ -16,10 +16,10 @@ def test_case(huffman_codes, huffman_root, output_file):
     decoded_text = huffman_decoding(original_encoded, huffman_root, output_file)
 
     print("Original Text:\t", original_text)
-    print("Encoded Text:\t", encoded_text)
+    print("Encoded Text:\t", encoded_text[0])
     print("Expected Enc:\t " + original_encoded)
     print("Decoded Text:\t", decoded_text)
-    print("Expected Dec:\t " + original_text)
+    print("Expected Dec:\t " + original_text.replace(" ", ""))
 
 
 def huffman_process_files(freq_file, encoded_file, clear_file, output_file):
@@ -63,9 +63,11 @@ def build_frequency_table(freq_file):
 
 def build_huffman_tree(frequency_table):
     priority_queue = MyPriorityQueue()
+    # push items to queue
     for char, freq in frequency_table.items():
         priority_queue.push(HuffmanNode(char, freq))
 
+    # assign left/right
     while len(priority_queue) > 1:
         left = priority_queue.pop()
         right = priority_queue.pop()
@@ -89,6 +91,7 @@ def assign_codes_preorder(node, code, codes):
     if node is not None:
         if node.char is not None:
             codes[node.char] = code
+        # Use recursion to build codes in preorder
         assign_codes_preorder(node.left, code + "0", codes)
         assign_codes_preorder(node.right, code + "1", codes)
 
@@ -106,7 +109,7 @@ def huffman_encoding(text, code_map, output_file):
 
     final_encoded_string = ''.join(encoded_text)
 
-    #if skipped_chars:
+    # if skipped_chars:
     #    output_file.write("Skipped characters during encoding: " + ", ".join(skipped_chars) + "\n")
 
     return final_encoded_string, skipped_chars
