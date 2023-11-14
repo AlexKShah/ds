@@ -38,14 +38,16 @@ def huffman_process_files(freq_file, encoded_file, clear_file, output_file):
         encoded_line, skipped_chars = huffman_encoding(clear_line.strip(), huffman_codes, output_file)
         output_file.write("Original #" + str(idx) + ": \t" + clear_line)
         if skipped_chars:
-            output_file.write("Skipped characters during encoding: " + ", ".join(skipped_chars) + "\n")
+            output_file.write("Skipped characters during encoding: " + " ".join(skipped_chars) + "\n")
         output_file.write("Encoded: \t\t" + encoded_line + "\n")
-        output_file.write("Re-Decoded: \t" + huffman_decoding(encoded_line, huffman_root, output_file) + "\n\n")
+        output_file.write("Re-Decoded: \t" + huffman_decoding(encoded_line, huffman_root, output_file)[0] + "\n\n")
 
     output_file.write("\n\n####Decoded Lines:\n\n")
     for idx, encoded_line in enumerate(encoded_file):
-        decoded_text = huffman_decoding(encoded_line.strip(), huffman_root, output_file)
+        decoded_text, incompatible_bits = huffman_decoding(encoded_line.strip(), huffman_root, output_file)
         output_file.write("Original #" + str(idx) + "\t" + encoded_line)
+        if incompatible_bits:
+            output_file.write("Error: Invalid encoded sequence encountered." + " ".join(incompatible_bits) + "\n")
         output_file.write("Decoded: \t\t" + decoded_text + "\n")
         output_file.write("Re-Encoded: \t" + huffman_encoding(decoded_text, huffman_codes, output_file)[0] + "\n\n")
 
@@ -118,7 +120,7 @@ def huffman_encoding(text, code_map, output_file):
 def huffman_decoding(encoded_text, root, output_file):
     decoded_text = ""
     current_node = root
-    error_flag = False
+    incompatible_bits = []
 
     for bit in encoded_text:
         if bit == '0':
@@ -126,18 +128,12 @@ def huffman_decoding(encoded_text, root, output_file):
         elif bit == '1':
             current_node = current_node.right
         else:
-            error_flag = True
-            break
+            incompatible_bits.append(bit)
 
         if current_node is None or (current_node.char is None and bit not in ['0', '1']):
-            error_flag = True
-            break
-
-        if current_node.char:
+            continue
+        elif current_node.char:
             decoded_text += current_node.char
             current_node = root
 
-    if error_flag:
-        output_file.write("Error: Invalid encoded sequence encountered.\n")
-
-    return decoded_text
+    return decoded_text, incompatible_bits
