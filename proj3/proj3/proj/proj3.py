@@ -34,14 +34,20 @@ def huffman_process_files(freq_file, encoded_file, clear_file, output_file):
     huffman_codes = get_huffman_codes(huffman_root)
 
     output_file.write("####Encoded Lines:\n\n")
-    for clear_line in clear_file:
-        encoded_line = huffman_encoding(clear_line.strip(), huffman_codes, output_file)
-        output_file.write(encoded_line + "\n")
+    for idx, clear_line in enumerate(clear_file):
+        encoded_line, skipped_chars = huffman_encoding(clear_line.strip(), huffman_codes, output_file)
+        output_file.write("Original #" + str(idx) + ": \t" + clear_line)
+        if skipped_chars:
+            output_file.write("Skipped characters during encoding: " + ", ".join(skipped_chars) + "\n")
+        output_file.write("Encoded: \t\t" + encoded_line + "\n")
+        output_file.write("Re-Decoded: \t" + huffman_decoding(encoded_line, huffman_root, output_file) + "\n\n")
 
     output_file.write("\n\n####Decoded Lines:\n\n")
-    for encoded_line in encoded_file:
+    for idx, encoded_line in enumerate(encoded_file):
         decoded_text = huffman_decoding(encoded_line.strip(), huffman_root, output_file)
-        output_file.write(decoded_text + "\n")
+        output_file.write("Original #" + str(idx) + "\t" + encoded_line)
+        output_file.write("Decoded: \t\t" + decoded_text + "\n")
+        output_file.write("Re-Encoded: \t" + huffman_encoding(decoded_text, huffman_codes, output_file)[0] + "\n\n")
 
     # DEBUG
     test_case(huffman_codes, huffman_root, output_file)
@@ -89,21 +95,21 @@ def assign_codes_preorder(node, code, codes):
 
 def huffman_encoding(text, code_map, output_file):
     encoded_text = []
-    skipped_chars = set()
+    skipped_chars = []
 
     for char in text.upper():
         if char in code_map:
             encoded_char = code_map[char]
             encoded_text.append(encoded_char)
         else:
-            skipped_chars.add(char)
+            skipped_chars.append(char)
 
     final_encoded_string = ''.join(encoded_text)
 
-    if skipped_chars:
-        output_file.write("Skipped characters during encoding: " + ", ".join(skipped_chars) + "\n")
+    #if skipped_chars:
+    #    output_file.write("Skipped characters during encoding: " + ", ".join(skipped_chars) + "\n")
 
-    return final_encoded_string
+    return final_encoded_string, skipped_chars
 
 
 def huffman_decoding(encoded_text, root, output_file):
