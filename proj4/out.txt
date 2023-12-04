@@ -1,0 +1,348 @@
+/Users/alex/GitHub/ds/proj4/venv/bin/python -m proj 
+
+quicksort_first_pivot, random, Size 50:
+Sorted Data: [204, 338, 360, 407, 408, 538, 726, 762, 779, 849, 861, 881, 928, 1015, 1108, 1122, 1208, 1265, 1400, 1447, 1775, 1794, 2449, 2585, 2610, 2614, 2909, 3069, 3139, 3141, 3366, 3437, 3508, 3556, 3648, 3703, 3939, 3942, 4051, 4167, 4176, 4350, 4392, 4396, 4523, 4550, 4551, 4565, 4579, 4955]
+
+quicksort_first_pivot, random, Size 50:
+Comparisons: 277, Exchanges: 119
+
+
+quicksort_insertion_100, random, Size 50:
+Sorted Data: [204, 338, 360, 407, 408, 538, 726, 762, 779, 849, 861, 881, 928, 1015, 1108, 1122, 1208, 1265, 1400, 1447, 1775, 1794, 2449, 2585, 2610, 2614, 2909, 3069, 3139, 3141, 3366, 3437, 3508, 3556, 3648, 3703, 3939, 3942, 4051, 4167, 4176, 4350, 4392, 4396, 4523, 4550, 4551, 4565, 4579, 4955]
+
+quicksort_insertion_100, random, Size 50:
+Comparisons: 725, Exchanges: 727
+
+
+quicksort_insertion_50, random, Size 50:
+Sorted Data: [204, 338, 360, 407, 408, 538, 726, 762, 779, 849, 861, 881, 928, 1015, 1108, 1122, 1208, 1265, 1400, 1447, 1775, 1794, 2449, 2585, 2610, 2614, 2909, 3069, 3139, 3141, 3366, 3437, 3508, 3556, 3648, 3703, 3939, 3942, 4051, 4167, 4176, 4350, 4392, 4396, 4523, 4550, 4551, 4565, 4579, 4955]
+
+quicksort_insertion_50, random, Size 50:
+Comparisons: 725, Exchanges: 727
+
+
+quicksort_median_pivot, random, Size 50:
+Sorted Data: [204, 338, 360, 407, 408, 538, 726, 762, 779, 849, 861, 881, 928, 1015, 1108, 1122, 1208, 1265, 1400, 1447, 1775, 1794, 2449, 2585, 2610, 2614, 2909, 3069, 3139, 3141, 3366, 3437, 3508, 3556, 3648, 3703, 3939, 3942, 4051, 4167, 4176, 4350, 4392, 4396, 4523, 4550, 4551, 4565, 4579, 4955]
+
+quicksort_median_pivot, random, Size 50:
+Comparisons: 218, Exchanges: 173
+
+
+natural_merge_sort, random, Size 50:
+Sorted Data: [204, 338, 360, 407, 408, 538, 726, 762, 779, 849, 861, 881, 928, 1015, 1108, 1122, 1208, 1265, 1400, 1447, 1775, 1794, 2449, 2585, 2610, 2614, 2909, 3069, 3139, 3141, 3366, 3437, 3508, 3556, 3648, 3703, 3939, 3942, 4051, 4167, 4176, 4350, 4392, 4396, 4523, 4550, 4551, 4565, 4579, 4955]
+
+natural_merge_sort, random, Size 50:
+Comparisons: 217, Exchanges: 269
+
+
+quicksort_first_pivot, ascending, Size 50:
+Sorted Data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+quicksort_first_pivot, ascending, Size 50:
+Comparisons: 1225, Exchanges: 49
+
+
+quicksort_insertion_100, ascending, Size 50:
+Sorted Data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+quicksort_insertion_100, ascending, Size 50:
+Comparisons: 49, Exchanges: 49
+
+
+quicksort_insertion_50, ascending, Size 50:
+Sorted Data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+quicksort_insertion_50, ascending, Size 50:
+Comparisons: 49, Exchanges: 49
+
+
+quicksort_median_pivot, ascending, Size 50:
+Sorted Data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+quicksort_median_pivot, ascending, Size 50:
+Comparisons: 193, Exchanges: 148
+
+
+natural_merge_sort, ascending, Size 50:
+Sorted Data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+natural_merge_sort, ascending, Size 50:
+Comparisons: 161, Exchanges: 213
+
+
+quicksort_first_pivot, descending, Size 50:
+Sorted Data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+quicksort_first_pivot, descending, Size 50:
+Comparisons: 1225, Exchanges: 674
+
+
+quicksort_insertion_100, descending, Size 50:
+Sorted Data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+quicksort_insertion_100, descending, Size 50:
+Comparisons: 1225, Exchanges: 1274
+
+
+quicksort_insertion_50, descending, Size 50:
+Sorted Data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+quicksort_insertion_50, descending, Size 50:
+Comparisons: 1225, Exchanges: 1274
+
+
+quicksort_median_pivot, descending, Size 50:
+Sorted Data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+quicksort_median_pivot, descending, Size 50:
+Comparisons: 245, Exchanges: 187
+
+
+natural_merge_sort, descending, Size 50:
+Sorted Data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+natural_merge_sort, descending, Size 50:
+Comparisons: 133, Exchanges: 185
+
+
+quicksort_first_pivot, random, Size 1000:
+Comparisons: 10569, Exchanges: 5653
+
+
+quicksort_insertion_100, random, Size 1000:
+Comparisons: 23416, Exchanges: 20537
+
+
+quicksort_insertion_50, random, Size 1000:
+Comparisons: 16172, Exchanges: 12778
+
+
+quicksort_median_pivot, random, Size 1000:
+Comparisons: 9107, Exchanges: 5570
+
+
+natural_merge_sort, random, Size 1000:
+Comparisons: 8737, Exchanges: 9738
+
+
+quicksort_first_pivot, ascending, Size 1000:
+Comparisons: 499500, Exchanges: 999
+
+
+quicksort_insertion_100, ascending, Size 1000:
+Comparisons: 494550, Exchanges: 999
+
+
+quicksort_insertion_50, ascending, Size 1000:
+Comparisons: 498275, Exchanges: 999
+
+
+quicksort_median_pivot, ascending, Size 1000:
+Comparisons: 7987, Exchanges: 4960
+
+
+natural_merge_sort, ascending, Size 1000:
+Comparisons: 5052, Exchanges: 6053
+
+
+quicksort_first_pivot, descending, Size 1000:
+Comparisons: 499500, Exchanges: 250999
+
+
+quicksort_insertion_100, descending, Size 1000:
+Comparisons: 499500, Exchanges: 253449
+
+
+quicksort_insertion_50, descending, Size 1000:
+Comparisons: 499500, Exchanges: 251599
+
+
+quicksort_median_pivot, descending, Size 1000:
+Comparisons: 14205, Exchanges: 9001
+
+
+natural_merge_sort, descending, Size 1000:
+Comparisons: 4932, Exchanges: 5933
+
+
+quicksort_first_pivot, random, Size 2000:
+Comparisons: 23399, Exchanges: 12554
+
+
+quicksort_insertion_100, random, Size 2000:
+Comparisons: 48713, Exchanges: 42335
+
+
+quicksort_insertion_50, random, Size 2000:
+Comparisons: 31958, Exchanges: 24297
+
+
+quicksort_median_pivot, random, Size 2000:
+Comparisons: 20861, Exchanges: 12116
+
+
+natural_merge_sort, random, Size 2000:
+Comparisons: 19395, Exchanges: 21396
+
+
+quicksort_first_pivot, ascending, Size 2000:
+Comparisons: 1999000, Exchanges: 1999
+
+
+quicksort_insertion_100, ascending, Size 2000:
+Comparisons: 1994050, Exchanges: 1999
+
+
+quicksort_insertion_50, ascending, Size 2000:
+Comparisons: 1997775, Exchanges: 1999
+
+
+quicksort_median_pivot, ascending, Size 2000:
+Comparisons: 17964, Exchanges: 10916
+
+
+natural_merge_sort, ascending, Size 2000:
+Comparisons: 11104, Exchanges: 13105
+
+
+quicksort_first_pivot, descending, Size 2000:
+Comparisons: 1999000, Exchanges: 1001999
+
+
+quicksort_insertion_100, descending, Size 2000:
+Comparisons: 1999000, Exchanges: 1004449
+
+
+quicksort_insertion_50, descending, Size 2000:
+Comparisons: 1999000, Exchanges: 1002599
+
+
+quicksort_median_pivot, descending, Size 2000:
+Comparisons: 32880, Exchanges: 20499
+
+
+natural_merge_sort, descending, Size 2000:
+Comparisons: 10864, Exchanges: 12865
+
+
+quicksort_first_pivot, random, Size 5000:
+Comparisons: 68270, Exchanges: 35059
+
+
+quicksort_insertion_100, random, Size 5000:
+Comparisons: 127638, Exchanges: 105268
+
+
+quicksort_insertion_50, random, Size 5000:
+Comparisons: 92209, Exchanges: 66858
+
+
+quicksort_median_pivot, random, Size 5000:
+Comparisons: 60807, Exchanges: 37644
+
+
+natural_merge_sort, random, Size 5000:
+Comparisons: 56820, Exchanges: 61825
+
+
+quicksort_first_pivot, ascending, Size 5000:
+Comparisons: 12497500, Exchanges: 4999
+
+
+quicksort_insertion_100, ascending, Size 5000:
+Comparisons: 12492550, Exchanges: 4999
+
+
+quicksort_insertion_50, ascending, Size 5000:
+Comparisons: 12496275, Exchanges: 4999
+
+
+quicksort_median_pivot, ascending, Size 5000:
+Comparisons: 51822, Exchanges: 30713
+
+
+natural_merge_sort, ascending, Size 5000:
+Comparisons: 33356, Exchanges: 38361
+
+
+quicksort_first_pivot, descending, Size 5000:
+Comparisons: 12497500, Exchanges: 6254999
+
+
+quicksort_insertion_100, descending, Size 5000:
+Comparisons: 12497500, Exchanges: 6257449
+
+
+quicksort_insertion_50, descending, Size 5000:
+Comparisons: 12497500, Exchanges: 6255599
+
+
+quicksort_median_pivot, descending, Size 5000:
+Comparisons: 98004, Exchanges: 60501
+
+
+natural_merge_sort, descending, Size 5000:
+Comparisons: 29804, Exchanges: 34809
+
+
+quicksort_first_pivot, random, Size 10000:
+Comparisons: 157753, Exchanges: 80463
+
+
+quicksort_insertion_100, random, Size 10000:
+Comparisons: 274484, Exchanges: 218722
+
+
+quicksort_insertion_50, random, Size 10000:
+Comparisons: 207732, Exchanges: 146252
+
+
+quicksort_median_pivot, random, Size 10000:
+Comparisons: 134190, Exchanges: 81497
+
+
+natural_merge_sort, random, Size 10000:
+Comparisons: 123668, Exchanges: 133673
+
+
+quicksort_first_pivot, ascending, Size 10000:
+Comparisons: 49995000, Exchanges: 9999
+
+
+quicksort_insertion_100, ascending, Size 10000:
+Comparisons: 49990050, Exchanges: 9999
+
+
+quicksort_insertion_50, ascending, Size 10000:
+Comparisons: 49993775, Exchanges: 9999
+
+
+quicksort_median_pivot, ascending, Size 10000:
+Comparisons: 113631, Exchanges: 66421
+
+
+natural_merge_sort, ascending, Size 10000:
+Comparisons: 71712, Exchanges: 81717
+
+
+quicksort_first_pivot, descending, Size 10000:
+Comparisons: 49995000, Exchanges: 25009999
+
+
+quicksort_insertion_100, descending, Size 10000:
+Comparisons: 49995000, Exchanges: 25012449
+
+
+quicksort_insertion_50, descending, Size 10000:
+Comparisons: 49995000, Exchanges: 25010599
+
+
+quicksort_median_pivot, descending, Size 10000:
+Comparisons: 218585, Exchanges: 133464
+
+
+natural_merge_sort, descending, Size 10000:
+Comparisons: 64608, Exchanges: 74613
+
+
+Process finished with exit code 0

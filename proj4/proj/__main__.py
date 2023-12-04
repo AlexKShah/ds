@@ -6,13 +6,15 @@ __version__ = proj4
 """
 from pathlib import Path
 import argparse
+from proj.tests import run_sorts
 
 
 def main():
     arg_parser = argparse.ArgumentParser()
     args = arg_parser.parse_args()
 
-    process_sorts()
+    run_sorts()
+
 
 if __name__ == "__main__":
     main()

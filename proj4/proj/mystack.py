@@ -1,10 +1,23 @@
 """
-Class MyStack is an implementation of a stack data structure
-Modified for proj3 to implement a priority queue and a Huffman node
+Class MyStack contains helper structures including an implementation of a stack data structure,
+priority queue, and other node types for lab assignments
 
 __author__ = Alex Shah
-__version__ = proj3
+__version__ = proj4
 """
+
+
+class SortResult:
+    def __init__(self, sorted_data, comparisons, exchanges):
+        self.sorted_data = sorted_data
+        self.comparisons = comparisons
+        self.exchanges = exchanges
+
+
+class ListNode:
+    def __init__(self, value=0, next=None):
+        self.value = value
+        self.next = next
 
 
 class HuffmanNode:
@@ -53,6 +66,9 @@ class MyStack:
         self.items = []
 
     def push(self, item):
+        self.items.append(item)
+
+    def append(self, item):
         self.items.append(item)
 
     def pop(self):

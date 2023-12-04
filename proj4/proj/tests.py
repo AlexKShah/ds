@@ -1,25 +1,38 @@
+"""
+Tests and runner for proj4
+Create test files and run sorts against them
+
+__author__ = Alex Shah
+__version__ = proj4
+"""
+
 import random
 import os
-from sorts import *
+from proj.sorts import *
 
 
 def create_input_files(sizes):
-    os.makedirs('input_files', exist_ok=True)
+    os.makedirs('proj/input_files', exist_ok=True)
     for size in sizes:
-        # Random order
-        with open(f'input_files/input_random_{size}.txt', 'w') as file:
-            numbers = [random.randint(1, size * 100) for _ in range(size)]
-            file.write('\n'.join(map(str, numbers)))
 
-        # Ascending order
-        with open(f'input_files/input_ascending_{size}.txt', 'w') as file:
-            numbers = list(range(1, size + 1))
-            file.write('\n'.join(map(str, numbers)))
+        try:
 
-        # Descending order
-        with open(f'input_files/input_descending_{size}.txt', 'w') as file:
-            numbers = list(range(size, 0, -1))
-            file.write('\n'.join(map(str, numbers)))
+            # Random order
+            with open(f'proj/input_files/input_random_{size}.txt', 'w') as file:
+                numbers = [random.randint(1, size * 100) for _ in range(size)]
+                file.write('\n'.join(map(str, numbers)))
+
+            # Ascending order
+            with open(f'proj/input_files/input_ascending_{size}.txt', 'w') as file:
+                numbers = list(range(1, size + 1))
+                file.write('\n'.join(map(str, numbers)))
+
+            # Descending order
+            with open(f'proj/input_files/input_descending_{size}.txt', 'w') as file:
+                numbers = list(range(size, 0, -1))
+                file.write('\n'.join(map(str, numbers)))
+        except Exception as e:
+            print(f"Error in {file}: {e}")
 
 
 def array_to_linked_list(arr):
@@ -51,7 +64,7 @@ def run_sorts():
 
     for size in sizes:
         for order in ['random', 'ascending', 'descending']:
-            file_path = f'input_files/input_{order}_{size}.txt'
+            file_path = f'proj/input_files/input_{order}_{size}.txt'
             with open(file_path, 'r') as file:
                 data = [int(line.strip()) for line in file]
 
@@ -65,13 +78,18 @@ def run_sorts():
                         head, comparisons, exchanges = sort_function(head)
                         sorted_data = linked_list_to_array(head)  # Convert back to array after sorting
                     else:
-                        sorted_data, comparisons, exchanges = sort_function(copied_data, 0, len(copied_data) - 1)
+                        # Adjust call for quicksort_first_pivot
+                        if sort_function == quicksort_first_pivot:
+                            sorted_data, comparisons, exchanges = sort_function(copied_data)
+                        else:
+                            sorted_data, comparisons, exchanges = sort_function(copied_data, 0, len(copied_data) - 1)
 
                     if size == 50:
                         # Print sorted data and counts for size 50
                         print(f"\n{sort_function.__name__}, {order}, Size {size}:")
                         print("Sorted Data:", sorted_data)
-                    print(f"Comparisons: {comparisons}, Exchanges: {exchanges}")
+                    print(f"\n{sort_function.__name__}, {order}, Size {size}:")
+                    print(f"Comparisons: {comparisons}, Exchanges: {exchanges}\n")
 
                 except Exception as e:
                     print(f"Error in {sort_function.__name__}, {order}, Size {size}: {e}")

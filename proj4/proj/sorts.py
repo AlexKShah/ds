@@ -1,39 +1,17 @@
 """
-This program defines various sorts
+This program defines 5 sorts
+Quicksort
+  - First item pivot
+  - Insert <= 100
+  - Insert <= 50
+  - Median of three
+Natural Merge Sort
 
 __author__ = Alex Shah
 __version__ = proj4
 """
 
-
-class SortResult:
-    def __init__(self, sorted_data, comparisons, exchanges):
-        self.sorted_data = sorted_data
-        self.comparisons = comparisons
-        self.exchanges = exchanges
-
-
-class ListNode:
-    def __init__(self, value=0, next=None):
-        self.value = value
-        self.next = next
-
-
-def quicksort_first_pivot(arr, low, high, comparisons=0, exchanges=0):
-    if low < high:
-        pivot_index, comp, exch = partition_first(arr, low, high)
-        comparisons += comp
-        exchanges += exch
-
-        arr, comp, exch = quicksort_first_pivot(arr, low, pivot_index - 1, comparisons, exchanges)
-        comparisons += comp
-        exchanges += exch
-
-        arr, comp, exch = quicksort_first_pivot(arr, pivot_index + 1, high, comparisons, exchanges)
-        comparisons += comp
-        exchanges += exch
-
-    return arr, comparisons, exchanges
+from proj.mystack import *
 
 
 def partition_first(arr, low, high):
@@ -74,52 +52,25 @@ def insertion_sort(arr, low, high):
     return arr, comparisons, exchanges
 
 
-def quicksort_insertion_100(arr, low, high, comparisons=0, exchanges=0):
-    if high - low <= 100:
-        arr, comp, exch = insertion_sort(arr, low, high)
-        return arr, comparisons + comp, exchanges + exch
-    else:
-        pivot_index, comp, exch = partition_first(arr, low, high)
-        comparisons += comp
-        exchanges += exch
-        arr, comp, exch = quicksort_insertion_100(arr, low, pivot_index - 1, comparisons, exchanges)
-        comparisons += comp
-        exchanges += exch
-        arr, comp, exch = quicksort_insertion_100(arr, pivot_index + 1, high, comparisons, exchanges)
-        comparisons += comp
-        exchanges += exch
-        return arr, comparisons, exchanges
+def merge_sorted_lists(left, right):
+    dummy = tail = ListNode()
+    comparisons, exchanges = 0, 0
 
+    while left and right:
+        comparisons += 1
+        if left.value < right.value:
+            tail.next = left
+            left = left.next
+        else:
+            tail.next = right
+            right = right.next
+        exchanges += 1
+        tail = tail.next
 
-def quicksort_insertion_50(arr, low, high, comparisons=0, exchanges=0):
-    if high - low <= 50:
-        arr, comp, exch = insertion_sort(arr, low, high)
-        return arr, comparisons + comp, exchanges + exch
-    else:
-        pivot_index, comp, exch = partition_first(arr, low, high)
-        comparisons += comp
-        exchanges += exch
-        arr, comp, exch = quicksort_insertion_50(arr, low, pivot_index - 1, comparisons, exchanges)
-        comparisons += comp
-        exchanges += exch
-        arr, comp, exch = quicksort_insertion_50(arr, pivot_index + 1, high, comparisons, exchanges)
-        comparisons += comp
-        exchanges += exch
-        return arr, comparisons, exchanges
+    tail.next = left or right
+    exchanges += 1 if tail.next else 0
 
-
-def quicksort_median_pivot(arr, low, high, comparisons=0, exchanges=0):
-    if low < high:
-        pivot_index, comp, exch = partition_median(arr, low, high)
-        comparisons += comp
-        exchanges += exch
-        arr, comp, exch = quicksort_median_pivot(arr, low, pivot_index - 1, comparisons, exchanges)
-        comparisons += comp
-        exchanges += exch
-        arr, comp, exch = quicksort_median_pivot(arr, pivot_index + 1, high, comparisons, exchanges)
-        comparisons += comp
-        exchanges += exch
-    return arr, comparisons, exchanges
+    return dummy.next, comparisons, exchanges
 
 
 def partition_median(arr, low, high):
@@ -153,49 +104,111 @@ def partition_median(arr, low, high):
     return i + 1, comparisons, exchanges
 
 
-def natural_merge_sort(head, comparisons=0, exchanges=0):
+def quicksort_first_pivot(arr):
+    stack = MyStack()
+    stack.push((0, len(arr) - 1))
+    total_comp, total_exch = 0, 0
+
+    while not stack.is_empty():
+        start, end = stack.pop()
+        if start < end:
+            pivot_index, comp, exch = partition_first(arr, start, end)
+            total_comp += comp
+            total_exch += exch
+
+            # Push indices of subarrays onto stack
+            stack.push((start, pivot_index - 1))
+            stack.push((pivot_index + 1, end))
+
+    return arr, total_comp, total_exch
+
+
+def quicksort_insertion_100(arr, low, high):
+    return quicksort_insertion(arr, low, high, 100)
+
+
+def quicksort_insertion_50(arr, low, high):
+    return quicksort_insertion(arr, low, high, 50)
+
+
+def quicksort_insertion(arr, low, high, threshold):
+    comp, exch = 0, 0
+    stack = [(low, high)]
+
+    while stack:
+        low, high = stack.pop()
+        if high - low <= threshold:
+            _, insert_comp, insert_exch = insertion_sort(arr, low, high)
+            comp += insert_comp
+            exch += insert_exch
+        elif low < high:
+            pivot_index, pivot_comp, pivot_exch = partition_first(arr, low, high)
+            comp += pivot_comp
+            exch += pivot_exch
+
+            stack.append((low, pivot_index - 1))
+            stack.append((pivot_index + 1, high))
+
+    return arr, comp, exch
+
+
+def quicksort_median_pivot(arr, low, high):
+    comp, exch = 0, 0
+    stack = [(low, high)]
+
+    while stack:
+        low, high = stack.pop()
+        if low < high:
+            pivot_index, pivot_comp, pivot_exch = partition_median(arr, low, high)
+            comp += pivot_comp
+            exch += pivot_exch
+
+            stack.append((low, pivot_index - 1))
+            stack.append((pivot_index + 1, high))
+
+    return arr, comp, exch
+
+
+def natural_merge_sort(head):
+    comparisons, exchanges = 0, 0
     if head is None or head.next is None:
         return head, comparisons, exchanges
 
-    left_half, right_half = split_list(head)
-    left_sorted, left_comp, left_exch = natural_merge_sort(left_half)
-    right_sorted, right_comp, right_exch = natural_merge_sort(right_half)
+    size = 1
+    while True:
+        left = head
+        prev_tail = dummy = ListNode()
+        num_merges = 0
 
-    merged, merge_comp, merge_exch = merge_sorted_lists(left_sorted, right_sorted)
-    total_comp = left_comp + right_comp + merge_comp
-    total_exch = left_exch + right_exch + merge_exch
+        while left:
+            num_merges += 1
+            right = split_list_at(left, size)
+            left_next = split_list_at(right, size)
 
-    return merged, total_comp, total_exch
+            merged, merge_comp, merge_exch = merge_sorted_lists(left, right)
+            comparisons += merge_comp
+            exchanges += merge_exch
+
+            prev_tail.next = merged
+            while prev_tail.next:
+                prev_tail = prev_tail.next
+
+            left = left_next
+
+        head = dummy.next
+        if num_merges <= 1:
+            break
+        size *= 2
+
+    return head, comparisons, exchanges
 
 
-def split_list(head):
-    # Split the linked list into two halves
-    slow, fast = head, head.next
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-
-    middle = slow.next
-    slow.next = None
-    return head, middle
-
-
-def merge_sorted_lists(left, right):
-    dummy = tail = ListNode()
-    comparisons, exchanges = 0, 0
-
-    while left and right:
-        comparisons += 1
-        if left.value < right.value:
-            tail.next = left
-            left = left.next
-        else:
-            tail.next = right
-            right = right.next
-        exchanges += 1
-        tail = tail.next
-
-    tail.next = left or right
-    exchanges += 1 if tail.next else 0
-
-    return dummy.next, comparisons, exchanges
+def split_list_at(head, size):
+    while size - 1 > 0 and head:
+        head = head.next
+        size -= 1
+    if not head:
+        return None
+    next_head = head.next
+    head.next = None
+    return next_head
