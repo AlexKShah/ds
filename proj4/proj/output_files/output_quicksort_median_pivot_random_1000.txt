@@ -1,0 +1,2 @@
+Sort: quicksort_median_pivot, Order: random, Size: 1000
+Comparisons: 9146, Exchanges: 5920

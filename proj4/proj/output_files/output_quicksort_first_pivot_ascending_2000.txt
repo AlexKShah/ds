@@ -1,0 +1,2 @@
+Sort: quicksort_first_pivot, Order: ascending, Size: 2000
+Comparisons: 1999000, Exchanges: 1999

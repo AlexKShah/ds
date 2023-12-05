@@ -1,0 +1,2 @@
+Sort: natural_merge_sort, Order: ascending, Size: 1000
+Comparisons: 5052, Exchanges: 6053

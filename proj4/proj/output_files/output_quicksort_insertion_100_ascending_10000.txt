@@ -1,0 +1,2 @@
+Sort: quicksort_insertion_100, Order: ascending, Size: 10000
+Comparisons: 49990050, Exchanges: 9999
